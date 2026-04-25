@@ -1,0 +1,14 @@
+models:
+  - xlm-roberta-base
+  - bert-base-multilingual-cased
+user_lang: uz
+train_ratio: 0.7
+dev_ratio: 0.15
+test_ratio: 0.15
+results_csv: results.csv
+plot_path: results_plot.png
+translate_user_questions: [true, false]
+modes:
+  - qa
+  - qa+recommend
+top_k_recs: 3
