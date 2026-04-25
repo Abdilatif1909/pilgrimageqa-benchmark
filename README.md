@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Pilgrimage Assistant — Multilingual Pilgrimage Tourism AI
 
 Overview
@@ -76,3 +77,7 @@ Extending and notes
 License
 
 This prototype is provided as-is for demonstration and educational purposes. Add a license file if you plan to publish it publicly.
+=======
+# pilgrimageqa-benchmark
+A multilingual pilgrimage question-answering benchmark and retrieval-based evaluation framework for Hajj and Umrah assistance systems.
+>>>>>>> c7400ab5930011ebd40a9d1137b4ab61d5d684c0
