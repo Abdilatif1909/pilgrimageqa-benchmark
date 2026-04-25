@@ -1,83 +1,193 @@
-<<<<<<< HEAD
-Pilgrimage Assistant — Multilingual Pilgrimage Tourism AI
+# PilgrimageQA-Benchmark
+### A Multilingual Pilgrimage Question-Answering Benchmark and Retrieval-Based Evaluation Framework for Hajj and Umrah Assistance Systems
 
-Overview
+---
 
-This project is a full-stack prototype of a multilingual pilgrimage tourism assistant for Uzbekistan. It contains a Python/FastAPI backend with a transformer-based QA engine and a simple React frontend chat UI.
+## Author
 
-Repository structure
+**Meyliyev Abdilatif Raxmatillayevich**  
+Researcher in Artificial Intelligence, Natural Language Processing, and Multilingual Information Retrieval.
 
-- backend/app: FastAPI application and modules (QA engine, recommender, translator, dataset)
-- frontend: React chat interface
-- requirements.txt: Python dependencies for the backend
+---
 
-Features
+## Repository Overview
 
-- Ask questions in Uzbek, Russian or English
-- Answers are returned in Uzbek
-- Transformer (HuggingFace) QA pipeline over a small sample dataset of pilgrimage places
-- Language detection (langdetect) and translation (MarianMT / googletrans fallback)
-- Simple recommendation engine based on text similarity and optional user location
-- React frontend with chat interface and recommendation cards
+PilgrimageQA-Benchmark is an academic research repository developed to investigate multilingual question-answering performance in Hajj and Umrah pilgrimage assistance environments. The repository provides a reproducible benchmark framework for evaluating retrieval-based question-answering, translation-assisted semantic retrieval, and baseline snippet matching under noisy multilingual user queries.
 
-Backend setup (Python)
+Unlike ordinary chatbot prototypes, this repository is specifically organized as a **scientific benchmark implementation** intended for:
 
-1. Create a virtual environment and activate it:
+- reproducible experimentation,
+- comparative evaluation,
+- multilingual semantic retrieval analysis,
+- and future transformer-based fine-tuning studies.
 
-   python -m venv .venv
-   # Windows
-   .venv\Scripts\activate
-   # macOS / Linux
-   source .venv/bin/activate
+The primary target scenario is real-time digital assistance for Uzbek and Russian speaking pilgrims who require location guidance, ritual help, emergency instructions, accommodation advice, and contextual pilgrimage information.
 
-2. Install dependencies:
+---
 
-   pip install -r requirements.txt
+## Scientific Motivation
 
-3. Start the FastAPI server:
+Millions of Hajj and Umrah pilgrims experience practical communication difficulties due to:
 
-   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+- multilingual information barriers,
+- noisy mobile user inputs,
+- urgent location-based requests,
+- translation ambiguity,
+- and limited domain-specific intelligent guidance.
 
-Notes:
-- The first run may download transformer models and sentencepiece; this can take time and requires sufficient disk and memory.
-- If MarianMT models for certain language pairs are not available, the translator falls back to googletrans (internet required) or returns the original text.
+Most currently available pilgrimage applications provide only static FAQ systems or manually organized navigation panels. They lack adaptive multilingual question answering under semantically diverse user formulations.
 
-Frontend setup (React)
+This repository addresses that research gap by constructing:
 
-1. From the frontend folder, install node dependencies:
+> a multilingual retrieval-oriented pilgrimage QA benchmark with controlled synthetic evaluation.
 
-   cd frontend
-   npm install
+---
 
-2. Start the development server:
+## Main Research Contributions
 
-   npm start
+### 1. Large-Scale Synthetic Benchmark Dataset
+A multilingual synthetic pilgrimage corpus containing more than **10,000 balanced QA records**.
 
-By default the frontend expects the backend at http://localhost:8000. CORS is enabled for http://localhost:3000 in the backend for development.
+Each record includes:
 
-API endpoints
+- Uzbek question formulation,
+- Russian aligned question,
+- gold answer in Uzbek,
+- gold answer in Russian,
+- contextual evidence passage,
+- intent category,
+- difficulty label,
+- linguistic form,
+- reasoning metadata.
 
-- POST /ask
-  - body: { "question": "...", "user_location": "lat,lon" }
-  - returns: answer in Uzbek, detected language, source context and recommendations
+### 2. Retrieval-Based QA Engine
+A lightweight semantic retrieval engine capable of selecting pilgrimage-relevant answer candidates from the benchmark corpus.
 
-- POST /recommend
-  - body: { "place_name": "Bukhara", "top_k": 3 }
-  - returns: similar places
+### 3. Translation-Assisted QA Comparison
+An auxiliary Uzbek→Russian intermediate translation pipeline for evaluating semantic loss during multilingual retrieval transfer.
 
-- POST /translate
-  - body: { "text": "...", "target_lang": "uz" }
-  - returns: translated_text
+### 4. Comparative Experimental Framework
+A deterministic experiment runner that compares:
 
-Extending and notes
+- Direct QA Retrieval,
+- Translation-Assisted QA,
+- Retrieval Baseline Snippet.
 
-- The QAEngine uses a TF-IDF retrieval over the small dataset and a HuggingFace QA pipeline for extraction; you can replace the retrieval with a stronger dense retriever or expand the dataset.
-- To support production deployment: persist models, add caching, rate limits, and secure API keys for paid translation services.
+### 5. Automatic Metric Evaluation
+Integrated benchmark scoring with:
 
-License
+- Exact Match (EM)
+- Token-Level F1
+- BLEU Similarity
+- Average Latency
 
-This prototype is provided as-is for demonstration and educational purposes. Add a license file if you plan to publish it publicly.
-=======
-# pilgrimageqa-benchmark
-A multilingual pilgrimage question-answering benchmark and retrieval-based evaluation framework for Hajj and Umrah assistance systems.
->>>>>>> c7400ab5930011ebd40a9d1137b4ab61d5d684c0
+---
+
+## Repository Status
+
+Current repository version contains:
+
+- benchmark dataset generator,
+- retrieval modules,
+- QA simulation backend,
+- multilingual translation module,
+- experiment runner,
+- evaluation metrics,
+- result plotting utilities.
+
+This repository is under continuous scientific refinement for Scopus-indexed publication support.
+---
+
+## Repository Structure
+
+```text
+pilgrimageqa-benchmark/
+│
+├── backend/
+│   ├── app/
+│   │   ├── dataset.py
+│   │   ├── qa.py
+│   │   ├── translate.py
+│   │   ├── evaluation.py
+│   │   ├── experiments.py
+│   │   ├── plot_results.py
+│   │   └── main.py
+│   │
+│   ├── scripts/
+│   │   └── generate_pilgrimage_dataset.py
+│   │
+│   └── config.yaml
+│
+├── frontend/
+│   └── src/
+│       ├── App.js
+│       └── index.js
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
+---
+
+## Reproducibility Notes
+
+This benchmark repository was intentionally designed for deterministic reproducibility:
+
+- fixed random seed generation,
+- balanced intent allocation,
+- stable benchmark slicing,
+- consistent evaluation formulas.
+
+Therefore, all major comparative result tables can be regenerated by independent reviewers using the same repository version.
+
+---
+
+## Research Significance
+
+PilgrimageQA-Benchmark is not merely a chatbot demonstration project.  
+It is intended as:
+
+> a controlled multilingual retrieval benchmark for studying semantic robustness in pilgrimage-domain question answering.
+
+The repository provides a transparent experimental basis for:
+
+- multilingual retrieval benchmarking,
+- low-resource QA evaluation,
+- translation degradation studies,
+- domain-specific NLP adaptation,
+- future transformer fine-tuning.
+
+This makes the repository suitable for:
+
+- Scopus journal reproducibility checks,
+- academic benchmark extension,
+- multilingual QA comparative studies,
+- domain adaptation research.
+
+---
+
+## Planned Future Work
+
+The following scientific extensions are planned:
+
+- transformer-based multilingual answer extraction,
+- sentence-embedding semantic retrieval,
+- larger Arabic/English/Russian/Uzbek multilingual alignment,
+- real mobile pilgrim query logging,
+- geolocation-aware recommendation modules,
+- deployment as real-time pilgrimage assistant API.
+
+---
+
+## Citation
+
+If you use this repository, benchmark structure, or experimental protocol in academic work, please cite:
+
+```bibtex id="9o95t7"
+@misc{meyliyev2026pilgrimageqa,
+  author       = {Meyliyev, Abdilatif Raxmatillayevich},
+  title        = {PilgrimageQA-Benchmark: A Multilingual Pilgrimage Question-Answering Benchmark and Retrieval-Based Evaluation Framework},
+  year         = {2026},
+  publisher    = {GitHub},
+  journal      = {Research Repository},
+  howpublished = {\url{https://github.com/Abdilatif1909/pilgrimageqa-benchmark}}
+}
