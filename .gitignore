@@ -1,5 +1,33 @@
+# Python virtual environment
 .venv/
+
+# Python cache
 __pycache__/
 *.pyc
-backend/results/
-backend/scripts/data/
+*.pyo
+*.pyd
+
+# Environment files
+.env
+
+# Frontend dependencies
+frontend/node_modules/
+frontend/build/
+
+# Logs / caches
+.cache/
+.pytest_cache/
+*.log
+
+# Duplicate old benchmark workspace
+pilgrimageqa-benchmark/
+
+# Local model binaries if generated later
+models/
+*.safetensors
+*.bin
+*.pt
+
+# Local editor folders
+.sixth/
+.vscode/settings.json

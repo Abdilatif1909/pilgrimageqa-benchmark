@@ -3,10 +3,10 @@ import csv
 import time
 from tqdm import tqdm
 
-from dataset import load_dataset
-from qa import QAEngine
-from translate import Translator
-from evaluation import exact_match, f1_score, bleu_score
+from app.dataset import load_dataset
+from app.qa import QAEngine
+from app.translate import Translator
+from app.evaluation import exact_match, f1_score, bleu_score
 
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))

@@ -1,0 +1,4 @@
+system_mode,EM,F1,BLEU,AVG_LATENCY,N
+direct_qa,0.302,0.8925,80.1637,0.0156,500
+translated_qa,0.0,0.6883,40.6689,0.0201,500
+retrieval_baseline,0.0,0.6024,27.1762,0.0,500
